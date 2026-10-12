@@ -662,6 +662,7 @@ function renderTopo() {
   if (tela === 'caixa' && c) sub = `<button data-acao="editar-cantina" title="Editar dados da cantina">${esc(c.ministerio)} · ${dataBR(c.data)}${c.prato ? ' · ' + esc(c.prato) : ''}</button>`;
   const botoes = [];
   if (tela !== 'caixa' && c) botoes.push(`<button class="btn" data-acao="ir" data-tela="caixa">← Voltar ao caixa</button>`);
+  botoes.push(`<a class="btn" href="como-usar.html">Ajuda</a>`);
   if (tela !== 'historico') botoes.push(`<button class="btn" data-acao="ir" data-tela="historico">Histórico</button>`);
   if (tela === 'caixa' && c) botoes.push(`<button class="btn fechar" data-acao="fechar-caixa">Fechar caixa</button>`);
   $('#topo').innerHTML = `<div class="marca"><div class="logo">🍔</div><div style="min-width:0"><h1>Caixa da Cantina</h1><div class="sub">${sub}</div></div></div><div class="topo-acoes">${botoes.join('')}</div>`;
