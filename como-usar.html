@@ -57,7 +57,7 @@ td:first-child{width:45%;font-weight:600;padding-left:0}
 </head>
 <body>
 <div class="folha">
-  <div class="acoes"><a class="btn claro" href="./">← Voltar ao app</a><button class="btn" onclick="print()">Imprimir / Salvar PDF</button></div>
+  <div class="acoes"><a class="btn claro" href="./" onclick="if (history.length > 1) { history.back(); return false; }">← Voltar ao app</a><button class="btn" onclick="print()">Imprimir / Salvar PDF</button></div>
 
   <div class="topo">
     <div>

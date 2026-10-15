@@ -204,17 +204,17 @@ tr.cancelada td{color:#9ca3af;text-decoration:line-through}
 .rel-detalhes summary{cursor:pointer;color:var(--muted);font-weight:600}
 
 /* relatório com as cores da PIB (cores fixas, iguais no tema claro e escuro) */
-.relatorio.pib{--card:#fffdfb; --ink:#29191a; --muted:#8a8080; --line:#eaded9; --soft:#f6efec; --rose:#c59a8e;
-  background:var(--card);color:var(--ink);border:0;padding:0;overflow:hidden;box-shadow:0 2px 18px rgba(41,25,26,.12)}
-.pib .rel-cab{background:#29191a;color:#faf6f4;padding:30px 34px 26px;margin:0;border:0}
-.pib .rel-cab small{font-family:Georgia,"Noto Serif",serif;font-style:italic;font-size:15px;color:#dbab9e}
+.relatorio.pib{--card:#fff; --ink:#29191a; --muted:#7d7474; --line:#e6e9e4; --soft:#eef4ef; --verde:#507f58; --rose:#c59a8e;
+  background:var(--card);color:var(--ink);border:0;padding:0;overflow:hidden;box-shadow:0 2px 18px rgba(41,25,26,.10)}
+.pib .rel-cab{background:var(--verde);color:#fff;padding:30px 34px 26px;margin:0;border:0}
+.pib .rel-cab small{font-family:Georgia,"Noto Serif",serif;font-style:italic;font-size:15px;color:#e8f0e9}
 .pib .rel-cab h1{text-transform:uppercase;letter-spacing:.12em;font-size:26px;margin:6px 0 4px}
-.pib .rel-cab p{color:#c9bcb8}
+.pib .rel-cab p{color:#dfe9e1}
 .pib .rel-corpo{padding:24px 34px 30px}
-.pib .rel-total{background:var(--soft);border-left:4px solid var(--rose);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.pib .rel-total{background:var(--soft);border-left:4px solid var(--verde);border-radius:10px;padding:14px 16px;margin-bottom:10px}
 .pib .rel-total span{text-transform:uppercase;letter-spacing:.08em;font-size:13px}
-.pib h2{color:var(--ink);letter-spacing:.14em;font-size:12.5px;padding-bottom:6px;border-bottom:2px solid var(--rose)}
-.pib th{color:var(--rose);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.pib h2{color:var(--ink);letter-spacing:.14em;font-size:12.5px;padding-bottom:6px;border-bottom:2px solid var(--verde)}
+.pib th{color:var(--verde);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
 .pib tr.tot td{background:var(--soft)}
 .pib tr.tot td:first-child{padding-left:8px}
 .pib tr.tot td:last-child{padding-right:8px}
@@ -233,7 +233,7 @@ tr.cancelada td{color:#9ca3af;text-decoration:line-through}
 .estilo.on{border-color:var(--ink)}
 .estilo .amostra{display:block;height:58px;border-radius:8px;margin-bottom:8px;border:1px solid var(--line);background:linear-gradient(#fff 0 0) 10px 12px/45% 6px no-repeat,linear-gradient(#d9d6cf 0 0) 10px 26px/75% 4px no-repeat,linear-gradient(#d9d6cf 0 0) 10px 36px/60% 4px no-repeat,#fafaf8}
 .estilo .amostra.simples{background:linear-gradient(#1c1f24 0 0) 10px 12px/45% 6px no-repeat,linear-gradient(#d9d6cf 0 0) 10px 26px/75% 4px no-repeat,linear-gradient(#d9d6cf 0 0) 10px 36px/60% 4px no-repeat,#fff}
-.estilo .amostra.pib{background:linear-gradient(#29191a 0 0) 0 0/100% 22px no-repeat,linear-gradient(#c59a8e 0 0) 10px 30px/80% 3px no-repeat,linear-gradient(#eaded9 0 0) 10px 40px/60% 4px no-repeat,#fffdfb}
+.estilo .amostra.pib{background:linear-gradient(#507f58 0 0) 0 0/100% 22px no-repeat,linear-gradient(#507f58 0 0) 10px 30px/80% 3px no-repeat,linear-gradient(#e6e9e4 0 0) 10px 40px/60% 4px no-repeat,#fff}
 .sobre b{color:var(--ink)}
 
 /* modal */
@@ -320,7 +320,7 @@ dialog::backdrop{background:rgba(20,24,30,.5)}
 <script>
 'use strict';
 const CHAVE = 'caixa-cantina-v1';
-const VERSAO_APP = '1.1';
+const VERSAO_APP = '1.2';
 const FORMAS = {
   pix:      {nome:'Pix',      ic:'⚡'},
   debito:   {nome:'Débito',   ic:'💳'},
@@ -909,7 +909,7 @@ function renderAjustes() {
   const est = (v, txt) => `<button class="estilo ${prefs.relatorio === v ? 'on' : ''}" data-acao="estilo-rel" data-v="${v}"><span class="amostra ${v}"></span>${txt}</button>`;
   return `<div class="hist ajustes">
     <div class="titulo-secao"><h2 style="font-size:22px;text-transform:none;letter-spacing:0;color:var(--ink)">Ajustes</h2>
-      ${!S.atual ? `<button class="btn" data-acao="ir" data-tela="inicio">← Início</button>` : ''}</div>
+      <button class="btn" data-acao="voltar">← Voltar</button></div>
     <div class="card"><h2>Aparência</h2>
       <p>“Automático” segue o modo claro/escuro do aparelho.</p>
       <div class="segmento">${seg('auto', 'Automático')}${seg('claro', 'Claro')}${seg('escuro', 'Escuro')}</div></div>
@@ -927,6 +927,7 @@ function renderAjustes() {
       <p style="margin:0">Desenvolvido por <b>Benjamim Maranho</b>.</p></div>
   </div>`;
 }
+A.voltar = () => { if (history.state?.app) history.back(); else { tela = S.atual ? 'caixa' : 'inicio'; render(); } };
 A.tema = d => { prefs.tema = d.v; salvarPrefs(); };
 A['estilo-rel'] = d => { prefs.relatorio = d.v; salvarPrefs(); toast(d.v === 'pib' ? 'Relatório com as cores da PIB' : 'Relatório simples'); };
 
@@ -1036,6 +1037,8 @@ function render() {
   if (tela === 'caixa' && !S.atual) tela = 'inicio';
   renderTopo();
   const html = tela === 'caixa' ? renderCaixa() : tela === 'historico' ? renderHistorico() : tela === 'ajustes' ? renderAjustes() : tela === 'relatorio' ? renderRelatorio() : renderInicio();
+  const endereco = '#' + tela + (tela === 'relatorio' ? '/' + relatorioId : '');
+  if (location.hash !== endereco) history.pushState({app: true}, '', endereco);
   $('#app').innerHTML = (tela === 'inicio' || tela === 'historico' ? instalarHTML() : '') + html;
   $('#app').classList.toggle('com-barra', tela === 'caixa' && S.carrinho.linhas.length > 0 && abaCel === 'vender');
   document.title = tela === 'relatorio' ? `Relatório – ${S.historico.find(x => x.id === relatorioId)?.ministerio || 'Cantina'}` : 'Caixa da Cantina';
@@ -1095,6 +1098,17 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
 
+// cada tela tem seu endereço (#caixa, #relatorio/id, #ajustes...) para o "Voltar" funcionar
+function lerEndereco() {
+  const [t, id] = location.hash.slice(1).split('/');
+  if (t === 'relatorio' && S.historico.some(c => c.id === id)) { tela = 'relatorio'; relatorioId = id; }
+  else if (t === 'caixa' && S.atual) tela = 'caixa';
+  else if (t === 'historico' || t === 'ajustes') tela = t;
+  else if (t === 'inicio' && !S.atual) tela = 'inicio';
+}
+window.addEventListener('popstate', () => { if ($('#modal').open) $('#modal').close(); lerEndereco(); render(); window.scrollTo(0, 0); });
+lerEndereco();
+history.replaceState(null, '', '#' + tela + (tela === 'relatorio' ? '/' + relatorioId : ''));
 render();
 </script>
 </body>
