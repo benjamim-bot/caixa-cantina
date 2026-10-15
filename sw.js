@@ -1,6 +1,6 @@
 // Guarda o app no aparelho para funcionar sem internet.
 // Ao mudar qualquer arquivo do app, aumente a VERSAO para os aparelhos baixarem de novo.
-const VERSAO = 'cantina-v3';
+const VERSAO = 'cantina-v4';
 const ARQUIVOS = ['./', './index.html', './como-usar.html', './qr.png', './manifest.json', './icone-192.png', './icone-512.png'];
 
 self.addEventListener('install', e => {
