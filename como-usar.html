@@ -21,6 +21,8 @@ p{margin:6px 0}
 ol{margin:6px 0;padding-left:26px}
 li{margin:5px 0}
 .passos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.passos.tres{grid-template-columns:repeat(3,1fr)}
+ul{margin:6px 0;padding-left:24px}
 .caixa{border:1px solid var(--line);border-radius:12px;padding:12px 16px}
 .caixa h3{margin:0 0 4px;font-size:18px}
 table{width:100%;border-collapse:collapse}
@@ -33,24 +35,26 @@ td:first-child{width:45%;font-weight:600;padding-left:0}
 .btn.claro{background:#fff;color:var(--ink);border:1px solid var(--line)}
 @media (max-width:620px){
   .folha{padding:22px 16px}
-  .passos{grid-template-columns:1fr}
+  .passos,.passos.tres{grid-template-columns:1fr}
   .qr{display:none}
   td{display:block;width:auto!important;padding:2px 0}
   tr{display:block;padding:8px 0;border-bottom:1px solid var(--line)}
   td{border:0}
 }
 @media print{
-  @page{size:A4;margin:12mm}
-  body{background:#fff;font-size:13.5px}
+  @page{size:A4;margin:10mm 12mm}
+  body{background:#fff;font-size:12.5px;line-height:1.35}
   .folha{padding:0;max-width:none}
   .acoes{display:none}
-  h1{font-size:24px}
-  h2{font-size:16px;margin:14px 0 6px}
-  .qr img{width:110px;height:110px}
+  h1{font-size:22px}
+  h2{font-size:15px;margin:11px 0 5px;padding-bottom:4px}
+  li{margin:2px 0}
+  p{margin:4px 0}
+  .qr img{width:95px;height:95px}
   .passos{gap:8px}
   .caixa{padding:8px 12px}
-  td{padding:5px 6px}
-  .aviso{padding:8px 12px;margin-top:14px}
+  td{padding:3px 6px}
+  .aviso{padding:7px 12px;margin-top:10px}
   .caixa,tr,.aviso{break-inside:avoid}
 }
 </style>
@@ -68,8 +72,8 @@ td:first-child{width:45%;font-weight:600;padding-left:0}
     <div class="qr"><img src="qr.png" alt="QR code do app">Aponte a câmera</div>
   </div>
 
-  <h2>1. Instalar no celular (só uma vez, com internet)</h2>
-  <div class="passos">
+  <h2>1. Instalar (só uma vez, com internet)</h2>
+  <div class="passos tres">
     <div class="caixa"><h3>Android</h3>
       <ol><li>Abra o link no <b>Chrome</b>.</li>
       <li>Toque no botão <b>Instalar</b> que aparece no app.<br><small>Se não aparecer: toque nos 3 pontinhos <b>⋮</b> e em <b>Adicionar à tela inicial</b>.</small></li></ol></div>
@@ -77,6 +81,9 @@ td:first-child{width:45%;font-weight:600;padding-left:0}
       <ol><li>Abra o link no <b>Safari</b>.</li>
       <li>Toque em <b>Compartilhar</b> (quadrado com seta ↑).</li>
       <li>Toque em <b>Adicionar à Tela de Início</b>.</li></ol></div>
+    <div class="caixa"><h3>Computador</h3>
+      <ol><li>Abra o link no <b>Chrome</b> ou <b>Edge</b>.</li>
+      <li>Clique em <b>Instalar</b> no app (ou no ícone de instalar na barra de endereço).</li></ol></div>
   </div>
   <p>Pronto: aparece o ícone <b>Cantina</b> na tela. A partir daí, abra sempre por ele. <b>Funciona sem internet.</b></p>
 
@@ -85,7 +92,7 @@ td:first-child{width:45%;font-weight:600;padding-left:0}
     <li><b>Abrir a cantina:</b> escreva o nome do ministério e o que vai vender (ex.: “Combo + refri”), com o preço e quantos foram feitos. Toque em <b>Abrir caixa</b>.</li>
     <li><b>Vender:</b> toque no lanche → escolha <b>Pix, Débito, Crédito ou Dinheiro</b> → toque em <b>Pago</b>.<br><small>No dinheiro, digite quanto a pessoa deu e o app mostra o troco.</small></li>
     <li><b>Pessoa vai pagar depois:</b> toque em <b>Paga depois</b> e escreva o nome dela.</li>
-    <li><b>No final:</b> toque em <b>Fechar caixa</b>. Aparece o relatório: toque em <b>Imprimir / Salvar PDF</b> e mande para a liderança.</li>
+    <li><b>No final:</b> toque em <b>Fechar caixa</b>. Aparece o relatório: toque em <b>Imprimir / Salvar PDF</b> e mande para a liderança. Se preferir, <b>Planilha (CSV)</b> abre no Excel.</li>
   </ol>
 
   <h2>3. Situações do dia a dia</h2>
@@ -95,9 +102,18 @@ td:first-child{width:45%;font-weight:600;padding-left:0}
     <tr><td>Desconto só para uma pessoa</td><td>Antes de tocar em Pago, toque no preço da linha (ex.: “R$ 10,00 un”).</td></tr>
     <tr><td>Fizeram mais lanches</td><td>Toque no lápis <b>✎</b> e aumente a quantidade.</td></tr>
     <tr><td>Registrei uma venda errada</td><td>Aba <b>Resumo</b> → toque no <b>X</b> da venda. O lanche volta para o estoque.</td></tr>
+    <tr><td>Mudar tema (claro/escuro)</td><td>Botão <b>⚙</b> no topo → <b>Aparência</b>.</td></tr>
   </table>
+  <p><small>No computador não tem a aba Resumo: ele já aparece do lado direito da tela.</small></p>
 
-  <div class="aviso"><span class="t">⚠ Importante</span>Use o <b>mesmo celular</b> do começo ao fim da cantina: as vendas ficam guardadas nele. Pode fechar o app e abrir de novo que nada se perde.</div>
+  <h2>4. Onde ficam as vendas?</h2>
+  <p>As vendas ficam salvas <b>no próprio aparelho onde o app está sendo usado</b>, seja <b>celular, tablet ou computador</b>. Nada vai para a internet.</p>
+  <ul>
+    <li>Pode fechar o app, desligar o aparelho e abrir de novo: <b>nada se perde</b>.</li>
+    <li>Cada aparelho tem as suas vendas. O que foi feito no celular <b>não aparece</b> no computador (e vice-versa). No computador, cada navegador (Chrome, Edge, Firefox) também guarda separado.</li>
+    <li>Só se perde se alguém <b>limpar os dados do navegador</b> ou usar <b>janela anônima</b>.</li>
+  </ul>
+  <div class="aviso"><span class="t">⚠ Importante</span>Use o <b>mesmo aparelho</b> do começo ao fim da cantina. No final, salve o <b>PDF</b> do relatório e mande para a liderança: ele é o registro oficial.</div>
 </div>
 </body>
 </html>
